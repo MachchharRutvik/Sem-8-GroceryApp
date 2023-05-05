@@ -67,25 +67,27 @@
               id="quantity"
               [(ngModel)]="product_quantity.quantity"
               maxlength="2"
+              (keyup)="checkUserInput()"
               placeholder="Enter Quantity"
             />
             <button
               type="button"
               class="btn btn-outline-transparent btn-success col-md-2"
               (click)="Add_cart(product)"
-              [disabled]="!(product_quantity.quantity > 0)"
+              [disabled]="!(product_quantity.quantity > 0) || (product_quantity.quantity[0] == '0') || (product_quantity.quantity[0] == '.') || (product_quantity.quantity[1] == '.') || (product_quantity.quantity[0] == '+')"
             >
               Add to Cart
             </button>
           </div>
         </div>
-        <div *ngIf="product_quantity.quantity > 0; else QuantityErr"></div>
+        <div *ngIf="!(product_quantity.quantity < 0) && (product_quantity.quantity[0] != '0') && (product_quantity.quantity[0] != '.') && (product_quantity.quantity[1] != '.'); else QuantityErr"></div>
         <ng-template #QuantityErr
           ><p class="text-danger fw-bold">
             Please Enter Valid Quantity
           </p></ng-template
         >
-        <div class="text-danger fw-bold">{{ QuantityErrMsg }}</div>
+        <!-- *ngIf="(product_quantity.quantity <= 0)" -->
+        <div class="text-danger fw-bold" *ngIf="QuantityErrMsg != ''">{{ QuantityErrMsg }}</div>
       </div>
     </div>
     <div class="col-lg-2"></div>

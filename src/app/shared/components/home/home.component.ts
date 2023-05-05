@@ -72,11 +72,7 @@ export class HomeComponent {
     }
   }
 
-  ngAfterViewInit() {
-    
-
-    // this.Showcart()
-  }
+ 
   ShowcartArr: any = [];
   Showcart() {
   

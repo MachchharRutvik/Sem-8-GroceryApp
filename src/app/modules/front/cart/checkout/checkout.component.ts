@@ -343,7 +343,6 @@ Pay(){
 
 paymentCapture(response) {
 if(response){
-debugger;
   this.Payment_id = response.razorpay_payment_id;
   this.Place_Order()
   console.log("payment id "+this.Payment_id);

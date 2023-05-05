@@ -41,10 +41,9 @@ export class CategoryComponent {
       next: (encryption_res) => {
         if (encryption_res) {
           if (encryption_res.data) {
-            console.log('encryption_res', encryption_res);
+            // console.log('encryption_res', encryption_res);
             this.encryption_data = encryption_res.data;
-  
-            this.GetProductByCategory(this.encryption_data,id);
+            this.GetProductByCategory(encryption_res.data,id);
           }
         }
       },
@@ -64,8 +63,8 @@ export class CategoryComponent {
             for(let i=0;i<this.grocery_items.length;i++){
              if(this.grocery_items[i].id==id)
              this.grocery_items[i]={...this.grocery_items[i],'items':Product_Res.data.length}
-              console.log("first",this.grocery_items[i])
-              console.log("first",this.grocery_items)
+              // console.log("first",this.grocery_items[i])
+              // console.log("first",this.grocery_items)
          
                 for(let j=0;j<this.Image_Arr.length;j++){
     

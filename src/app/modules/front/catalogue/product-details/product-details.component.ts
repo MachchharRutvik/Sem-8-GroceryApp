@@ -168,6 +168,14 @@ export class ProductDetailsComponent {
   
   product_Existing: any;
   Find_Customer_Cart: any;
+  format = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  checkUserInput() {
+    if (this.format.test(JSON.stringify(this.product_quantity.quantity))) {
+      this.QuantityErrMsg = '';
+    } else {
+      this.QuantityErrMsg = 'Please enter only numbers.';
+    }
+  }
 
   Add_cart(product: any) {
     // console.log('ShowCartArr', this.ShowcartArr);
@@ -231,4 +239,5 @@ if(!this.User_Details){
 }
     }
   }
+
 }
