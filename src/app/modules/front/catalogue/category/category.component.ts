@@ -91,7 +91,7 @@ export class CategoryComponent {
         if (Category_Res) {
           if (Category_Res.data) {
             console.log('Category_Res', Category_Res.data);
-            this.grocery_items = Category_Res.data;
+            this.grocery_items = Category_Res.data.filter(product=>product.is_active);
             for(let i=0;i<this.grocery_items.length;i++){
               
               this.encryption(JSON.stringify(this.grocery_items[i].id))

@@ -135,7 +135,7 @@
             </li>
             <ng-template #Logout>
               <li>
-                <a class="dropdown-item" (click)="logout()" >{{
+                <a class="dropdown-item" (click)="logout()" style="cursor: pointer;">{{
                   Login_Logout_msg
                 }}</a>
               </li>
@@ -153,7 +153,7 @@
         <div class="container-fluid d-flex justify-content-between mt-5">
           <a class="btn btn-success ms-5" [routerLink]="['front/catalogue/products-list',category]" routerLinkActive="router-link-active" >Browse All Category</a>
           <div class="d-flex me-5"> 
-            <a class="me-2 text-success fw-bolder text-decoration-none" href="tel:+919898798658"><img width="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAENElEQVR4nO1ZXYhVVRT+7M8o+tOZe9Y6MzZk4oMEFj5kRQ9F9BIFERokYUphkNaj+NTD4FOKUlgJ9VJvozSpMTnds9aZO0R/hiaIZD1YURFoU/6h/Uwje599973pPdd75XruHpgP7tOsfWavvdf61lrfBmYwgy5C4icgvA9K56B0EOX4PkwrDC26DsLboDz1v5/QH0j6+zAtUL7tFiiL2/hZJLwWKfdAaZdzaATBI+0lKH2TbZh+gfKSC/52PHMwXo1gMTLnZgjtzzbKhyE0cJGN8gp3K3+izLcjOIwsmA2lcbfJQyjHc3NthYbDDTGhjS6cfkTa19/UNgux3539SgQFoQm7sSR6qEX7Zx0ZTKDSwwgGauoETyEduLXlNcIfOWeGEQyEvs8cie5qeY0JQZP0NsTipxEExCfwivbW8QsuV44gCCS81jnyXlvrbKG06/7FFGah65DeOyH8H4RP4tO5N7W8Lo2ec3VnH4KBurYkoRdbsk8HrofyD+HRsETLfbynuObS9rzBsdYBvIqrEAyGcLVtTTJn1jS1HY1KUD6RMV38CIKD0lMu5n/Fbr4h3463O4d3IUhMYRaUv3RM9Fpubgifym6Dn0ewGIvvgfDfUJ5Ewg82tFF+2Q9alegOBAvlQZ/4jULM3JzwHndzXzUNw66PukoHXb5sa2hj+rIqOQh9aMkiSKTx3XbUzSbCVfmFlI65m9keRnVvBONAdXbX6N6GNkZZqSa/0hYEC6XXPSXnKSgSPVy7Pd6MIPE1roVw6k78s9zETuLHHduZG9yIIDFOvRA+6k78Y0sGjSC0zDtjwizInCnHC6H8m0vsoVyWsjfjw+ztMNlM+hbbIpiFzzu5J25zxhGAoeZG4Wh7u3iVbTqVJyH0nW1cC4PE90P59CUTOy0t9dRs5pV6ncw0mtU6dZEsyzuRlKKCnOFHofSXdybvZsql+XVFc8KOxrWOwKw9ameZlHvc2Jx11EbRFH6mGGcSftI7o/Rubi6YDkBp9wUnbza83jag9ajE8yyZ1ETzYaujFXMzPsx25LJZ1putc3nzlp1nmn43Xu1z0YiBRke74lB+oI4A9jZtII002yqS/j6vnWUHtQefzItxxfuyKjULf95R9VFppVdC7YHltEodrjNVMeLnjv7DSg97kjB0XVAHMOacOZfbNV8O9vbPcd89g8J6M6U36hjqzY4MXsqv+H6v+BHAieOmahtSuFykpaU1qo8e6+g+WycBX8EnIbwJo9GNbX2jXJpfIxLaiu6OzTwI4X/8XGN0s1ZEwHHqhdK3LqRGbdh2HeZhVfiLWu7QESvP5mnNFVvlq+3N/rY06WJ0MyMCVk/Z3tBJCL9vnzTM+4x5Hs8mzp883RbWRLYLE1bmccgI5+YVQBt0wZmTY9axaQGbzNFLUPogm0nMUGbf8wfbamlmMAN0FOcBIBNtnCMIeXEAAAAASUVORK5CYII=">+919898798658</a> <p class="text-success">24/7 Support Center</p>
+            <a class="me-2 text-success fw-bolder text-decoration-none" href="tel:+9999999999"><img width="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAENElEQVR4nO1ZXYhVVRT+7M8o+tOZe9Y6MzZk4oMEFj5kRQ9F9BIFERokYUphkNaj+NTD4FOKUlgJ9VJvozSpMTnds9aZO0R/hiaIZD1YURFoU/6h/Uwje599973pPdd75XruHpgP7tOsfWavvdf61lrfBmYwgy5C4icgvA9K56B0EOX4PkwrDC26DsLboDz1v5/QH0j6+zAtUL7tFiiL2/hZJLwWKfdAaZdzaATBI+0lKH2TbZh+gfKSC/52PHMwXo1gMTLnZgjtzzbKhyE0cJGN8gp3K3+izLcjOIwsmA2lcbfJQyjHc3NthYbDDTGhjS6cfkTa19/UNgux3539SgQFoQm7sSR6qEX7Zx0ZTKDSwwgGauoETyEduLXlNcIfOWeGEQyEvs8cie5qeY0JQZP0NsTipxEExCfwivbW8QsuV44gCCS81jnyXlvrbKG06/7FFGah65DeOyH8H4RP4tO5N7W8Lo2ec3VnH4KBurYkoRdbsk8HrofyD+HRsETLfbynuObS9rzBsdYBvIqrEAyGcLVtTTJn1jS1HY1KUD6RMV38CIKD0lMu5n/Fbr4h3463O4d3IUhMYRaUv3RM9Fpubgifym6Dn0ewGIvvgfDfUJ5Ewg82tFF+2Q9alegOBAvlQZ/4jULM3JzwHndzXzUNw66PukoHXb5sa2hj+rIqOQh9aMkiSKTx3XbUzSbCVfmFlI65m9keRnVvBONAdXbX6N6GNkZZqSa/0hYEC6XXPSXnKSgSPVy7Pd6MIPE1roVw6k78s9zETuLHHduZG9yIIDFOvRA+6k78Y0sGjSC0zDtjwizInCnHC6H8m0vsoVyWsjfjw+ztMNlM+hbbIpiFzzu5J25zxhGAoeZG4Wh7u3iVbTqVJyH0nW1cC4PE90P59CUTOy0t9dRs5pV6ncw0mtU6dZEsyzuRlKKCnOFHofSXdybvZsql+XVFc8KOxrWOwKw9ameZlHvc2Jx11EbRFH6mGGcSftI7o/Rubi6YDkBp9wUnbza83jag9ajE8yyZ1ETzYaujFXMzPsx25LJZ1putc3nzlp1nmn43Xu1z0YiBRke74lB+oI4A9jZtII002yqS/j6vnWUHtQefzItxxfuyKjULf95R9VFppVdC7YHltEodrjNVMeLnjv7DSg97kjB0XVAHMOacOZfbNV8O9vbPcd89g8J6M6U36hjqzY4MXsqv+H6v+BHAieOmahtSuFykpaU1qo8e6+g+WycBX8EnIbwJo9GNbX2jXJpfIxLaiu6OzTwI4X/8XGN0s1ZEwHHqhdK3LqRGbdh2HeZhVfiLWu7QESvP5mnNFVvlq+3N/rY06WJ0MyMCVk/Z3tBJCL9vnzTM+4x5Hs8mzp883RbWRLYLE1bmccgI5+YVQBt0wZmTY9axaQGbzNFLUPogm0nMUGbf8wfbamlmMAN0FOcBIBNtnCMIeXEAAAAASUVORK5CYII=">+9999999999</a> <p class="text-success">24/7 Support Center</p>
           </div>
         </div> 
     </div>
@@ -170,12 +170,12 @@
       <div class="d-flex me-5">
         <a
           class="me-2 text-success fw-bolder text-decoration-none"
-          href="tel:+919898798658"
+          href="tel:+9999999999"
           ><img
             width="20"
             height="20"
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAENElEQVR4nO1ZXYhVVRT+7M8o+tOZe9Y6MzZk4oMEFj5kRQ9F9BIFERokYUphkNaj+NTD4FOKUlgJ9VJvozSpMTnds9aZO0R/hiaIZD1YURFoU/6h/Uwje599973pPdd75XruHpgP7tOsfWavvdf61lrfBmYwgy5C4icgvA9K56B0EOX4PkwrDC26DsLboDz1v5/QH0j6+zAtUL7tFiiL2/hZJLwWKfdAaZdzaATBI+0lKH2TbZh+gfKSC/52PHMwXo1gMTLnZgjtzzbKhyE0cJGN8gp3K3+izLcjOIwsmA2lcbfJQyjHc3NthYbDDTGhjS6cfkTa19/UNgux3539SgQFoQm7sSR6qEX7Zx0ZTKDSwwgGauoETyEduLXlNcIfOWeGEQyEvs8cie5qeY0JQZP0NsTipxEExCfwivbW8QsuV44gCCS81jnyXlvrbKG06/7FFGah65DeOyH8H4RP4tO5N7W8Lo2ec3VnH4KBurYkoRdbsk8HrofyD+HRsETLfbynuObS9rzBsdYBvIqrEAyGcLVtTTJn1jS1HY1KUD6RMV38CIKD0lMu5n/Fbr4h3463O4d3IUhMYRaUv3RM9Fpubgifym6Dn0ewGIvvgfDfUJ5Ewg82tFF+2Q9alegOBAvlQZ/4jULM3JzwHndzXzUNw66PukoHXb5sa2hj+rIqOQh9aMkiSKTx3XbUzSbCVfmFlI65m9keRnVvBONAdXbX6N6GNkZZqSa/0hYEC6XXPSXnKSgSPVy7Pd6MIPE1roVw6k78s9zETuLHHduZG9yIIDFOvRA+6k78Y0sGjSC0zDtjwizInCnHC6H8m0vsoVyWsjfjw+ztMNlM+hbbIpiFzzu5J25zxhGAoeZG4Wh7u3iVbTqVJyH0nW1cC4PE90P59CUTOy0t9dRs5pV6ncw0mtU6dZEsyzuRlKKCnOFHofSXdybvZsql+XVFc8KOxrWOwKw9ameZlHvc2Jx11EbRFH6mGGcSftI7o/Rubi6YDkBp9wUnbza83jag9ajE8yyZ1ETzYaujFXMzPsx25LJZ1putc3nzlp1nmn43Xu1z0YiBRke74lB+oI4A9jZtII002yqS/j6vnWUHtQefzItxxfuyKjULf95R9VFppVdC7YHltEodrjNVMeLnjv7DSg97kjB0XVAHMOacOZfbNV8O9vbPcd89g8J6M6U36hjqzY4MXsqv+H6v+BHAieOmahtSuFykpaU1qo8e6+g+WycBX8EnIbwJo9GNbX2jXJpfIxLaiu6OzTwI4X/8XGN0s1ZEwHHqhdK3LqRGbdh2HeZhVfiLWu7QESvP5mnNFVvlq+3N/rY06WJ0MyMCVk/Z3tBJCL9vnzTM+4x5Hs8mzp883RbWRLYLE1bmccgI5+YVQBt0wZmTY9axaQGbzNFLUPogm0nMUGbf8wfbamlmMAN0FOcBIBNtnCMIeXEAAAAASUVORK5CYII="
-          />+919898798658</a
+          />+9999999999</a
         >
         <p class="text-success">24/7 Support Center</p>
       </div>

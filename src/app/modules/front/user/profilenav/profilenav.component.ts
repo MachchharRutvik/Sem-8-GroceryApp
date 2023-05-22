@@ -68,7 +68,7 @@ this._cartservice.getItemCount()
 this._cartservice.Subtotal()
 this.router.navigate(['front/user/login']);
 // console.log(this.email)
-this.toastr.success('Logout Successfully');
+this.toastr.success('Logout Successfull');
     }
   }
 }

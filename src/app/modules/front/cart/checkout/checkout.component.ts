@@ -148,7 +148,7 @@ PaymentMethod(){
   }
   OrderStatus(){
       // selected=true
-      this._encryptionservice.Encryption("4").subscribe({
+      this._encryptionservice.Encryption("3").subscribe({
         next: (encryption_res) => {
           if (encryption_res) {
             console.log('encryption_res', encryption_res.data);
@@ -246,8 +246,10 @@ Pay(){
 
       // Razorpay Payment Gateway
       this.options = {
-    "key": "rzp_test_XMtH9sEv4gUKNn", // Enter the Key ID generated from the Dashboard
-    "amount": this.GrandTotal, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+
+    // "key": "rzp_test_XMtH9sEv4gUKNn", // Enter the Key ID generated from the Dashboard
+    "key": "rzp_test_2ef2ySCDRH1WtY", // Enter the Key ID generated from the Dashboard
+    "amount": Math.ceil(this.GrandTotal), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     "currency": "INR",
     "name": "FreshCart", //your business name
     "description": "Test Transaction",

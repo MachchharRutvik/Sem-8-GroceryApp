@@ -356,11 +356,11 @@ export class ProductsService {
          image: "/assets/Category/breakfast.jpg"
       },
       {
-        title:"Dairy",
+        title:"Dairy Products",
          image: "/assets/Category/dairy.jpg"
       },
       {
-        title:"FoodGrains",
+        title:"Food Grains",
          image: "/assets/Category/foodgrains.jpg"
       },
       {

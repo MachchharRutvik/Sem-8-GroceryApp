@@ -46,9 +46,10 @@ export class ProductsComponent {
   existing_Product: any;
   Find_Customer_Cart: any;
   Find_Customer_Cart_Arr: any = [];
-  showImage(img){
+  showImage(img:any){
     let src="http://localhost:8080/api/v1/get-image/"
     let image=img
+    console.log("image",img)
     return src+img
   }
   GetProducts() {
@@ -56,17 +57,17 @@ export class ProductsComponent {
       next: (get_all_products_res) => {
         if (get_all_products_res) {
           if (get_all_products_res.data) {
-            this.filteredItems = get_all_products_res.data;
+            this.filteredItems = get_all_products_res.data.filter(product=>product.is_active);
             console.log('get_all_products_res', get_all_products_res.data);
-            for(let i=0;i<this.filteredItems.length;i++){
-              for(let j=0;j<this.Image_Arr.length;j++){
+            // for(let i=0;i<this.filteredItems.length;i++){
+            //   for(let j=0;j<this.Image_Arr.length;j++){
   
-                if(this.filteredItems[i].title==this.Image_Arr[j].title){
-                  this.filteredItems[i].avatar_image=this.Image_Arr[j].image
-                  // console.log('Product_Res', Product_Res.data);
-                }
-              }
-            }
+            //     if(this.filteredItems[i].title==this.Image_Arr[j].title){
+            //       this.filteredItems[i].avatar_image=this.Image_Arr[j].image
+            //       // console.log('Product_Res', Product_Res.data);
+            //     }
+            //   }
+            // }
             // console.log("allProducts",this.filteredItems)
           }
         }

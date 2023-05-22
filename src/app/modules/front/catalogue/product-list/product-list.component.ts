@@ -29,7 +29,7 @@ export class ProductListComponent implements OnInit {
     private _cartservice: CartService,
     private router: Router,
     private toastr: ToastrService,
-    private searchService:SearchService,
+    private searchService: SearchService,
     private spinner: NgxSpinnerService
   ) {
     this.spinner.show();
@@ -41,30 +41,30 @@ export class ProductListComponent implements OnInit {
     });
   }
   category: any;
-  product_quantity:any
+  product_quantity: any
   filterValue: any;
   productArray: any = [];
 
   filteredItems: any = [];
   Product_Arr: any = [];
-  category_path:any;
+  category_path: any;
   categories: any;
-  GetProductByCategory(encryption:any) {
+  GetProductByCategory(encryption: any) {
     this.productservice.getProductByCategoryId(encryption).subscribe({
       next: (Product_Res: any) => {
         if (Product_Res) {
           if (Product_Res.data) {
-            this.filteredItems = Product_Res.data;
+            this.filteredItems = Product_Res.data.map((product)=>product.product);
             console.log('Product_Res', Product_Res.data);
-          //   for(let i=0;i<Product_Res.data.length;i++){
-          //   for(let j=0;j<this.Image_Arr.length;j++){
+            //   for(let i=0;i<Product_Res.data.length;i++){
+            //   for(let j=0;j<this.Image_Arr.length;j++){
 
-          //     if(this.filteredItems[i].product.title==this.Image_Arr[j].title){
-          //       this.filteredItems[i].product.avatar_image=this.Image_Arr[j].image
-          //       // console.log('Product_Res', Product_Res.data);
-          //     }
-          //   }
-          // }
+            //     if(this.filteredItems[i].product.title==this.Image_Arr[j].title){
+            //       this.filteredItems[i].product.avatar_image=this.Image_Arr[j].image
+            //       // console.log('Product_Res', Product_Res.data);
+            //     }
+            //   }
+            // }
           }
         }
       },
@@ -75,10 +75,10 @@ export class ProductListComponent implements OnInit {
   }
   loading = true;
   allProducts: any = [];
-  showImage(img){
-    let src="http://localhost:8080/api/v1/get-image/"
-    let image=img
-    return src+img
+  showImage(img) {
+    let src = "http://localhost:8080/api/v1/get-image/"
+    let image = img
+    return src + img
   }
   GetProducts() {
     this.productservice.getALLProducts().subscribe({
@@ -87,14 +87,16 @@ export class ProductListComponent implements OnInit {
           if (get_all_products_res.data) {
             // console.log('get_all_products_res', get_all_products_res);
             this.allProducts = get_all_products_res.data;
-            console.log("allProducts",get_all_products_res)
+            console.log("allProducts", this.allProducts)
+            this.Search_In_All_Product()
+
             // for(let i=0;i<this.allProducts.length;i++){
             //   if(this.allProducts[i].title=this.Image_Arr[i].title){
             //     this.allProducts[i].avatar_image=this.Image_Arr[i].image
             //   }
             // }
-            
-            
+
+
             setTimeout(() => {
               /** spinner ends after 5 seconds */
               this.spinner.hide();
@@ -168,60 +170,67 @@ export class ProductListComponent implements OnInit {
   User_Details: any;
   categories_Path: any;
   product_Obj: any;
-  message:string;
-  Search_Arr:any
-  Search:any
-  Search_In_All_Product(){
+  message: string;
+  Search_Arr: any
+  Search: any
+  Search_In_All_Product() {
     this.searchService.getSearchQuery().subscribe((query) => {
-      console.log("Query",query)
-      this.Search=query
-      if(query){
+      console.log("Query", query)
+      this.Search = query
+      if (query) {
+        this.filteredItems = this.allProducts.filter((product: any) => {
+          return product.title.toLowerCase().indexOf(this.Search?.toLowerCase()) != -1
+        })
+        console.log('Rutvik', this.filteredItems)
+        // if (this.category_path) {
+        //   if (this.category_path == 'all') {
+        //     // console.log("ALl products",this.allProducts)
+        //     this.Search_Arr=this.allProducts.filter((product) =>
+        //     // product.id.includes(query)
+        //     product.title.toLowerCase().includes(query.toLowerCase()) ||
+        //     product.description.toLowerCase().includes(query.toLowerCase()) ||
+        //     product.short_description.toLowerCase().includes(query.toLowerCase()) ||
+        //     product.slug.toLowerCase().includes(query.toLowerCase())
 
-        if (this.category_path) {
-          if (this.category_path == 'all') {
-            // console.log("ALl products",this.allProducts)
-            this.Search_Arr=this.allProducts.filter((product) =>
-            // product.id.includes(query)
-            product.title.toLowerCase().includes(query.toLowerCase()) ||
-            product.description.toLowerCase().includes(query.toLowerCase()) ||
-            product.short_description.toLowerCase().includes(query.toLowerCase()) ||
-            product.slug.toLowerCase().includes(query.toLowerCase())
-            
-            );
-            console.log("ALl products",this.Search_Arr)
-            
-          }
-        }
-      }else{
-        this.GetProducts();
+        //     );
+        //     console.log("ALl products",this.Search_Arr)
+
+        //   }
+        // }
+      } else {
+        this.filteredItems = this.allProducts
       }
-      })
+    })
   }
-  Image_Arr=[]
+  Image_Arr = []
   quantity = 1;
-  ngOnInit() {  
-    this.Search_In_All_Product()
-    this.Image_Arr=this.productservice.GetImages()
+  ngOnInit() {
+    this.GetProducts()
+    console.log("allProducts", this.Search)
+      this.Search_In_All_Product()
+    
+    
+    this.Image_Arr = this.productservice.GetImages()
     // console.log("this.Image_Arr",this.Image_Arr)
     this.route.paramMap.subscribe((params) => {
       if (params) {
         this.category_path = params.get('id');
         // console.log('Category path', this.category_path);
-        
-          this.product_quantity = {
-            category:this.category_path,
-            quantity: this.quantity,
-          };
+
+        this.product_quantity = {
+          category: this.category_path,
+          quantity: this.quantity,
+        };
         this.GetAllCategory();
       }
     });
     this.User_Details = JSON.parse(sessionStorage.getItem('User_Details'));
-    if(this.User_Details){
+    if (this.User_Details) {
 
       this.Customer_Id = this.User_Details.id;
-    console.log('Customer_Id', this.Customer_Id);
-    this.GetProducts();
-  }
+      console.log('Customer_Id', this.Customer_Id);
+      this.GetProducts();
+    }
 
     // this.filteredItems=this.productservice.getProducts()
     // this.productArray=this.productservice.getProducts()
@@ -257,7 +266,7 @@ export class ProductListComponent implements OnInit {
   }
   Selected_Category: any;
   Filter_Category(category: any) {
-    console.log("Selected Category",category)
+    console.log("Selected Category", category)
     this.Selected_Category = category;
     if (this.category_path == 'all') {
       this.selectedCategory = 'all';
@@ -290,7 +299,7 @@ export class ProductListComponent implements OnInit {
           this.filteredItems.push(Obj);
           // console.log("Filter Items",this.filteredItems)
         }
-        
+
         return this.filteredItems;
       } else {
         this.product_Obj = this.grocery_items.find(
@@ -361,63 +370,63 @@ export class ProductListComponent implements OnInit {
   Find_Customer_Cart: any;
   Find_Customer_Cart_Arr: any = [];
   Showcart() {
-  
+
   }
 
-  
+
   Add_cart(i, product) {
     console.log('ShowCartArr', this.ShowcartArr);
     console.log('Product', product);
-    if(this.User_Details){
+    if (this.User_Details) {
 
       this.existing_Product = this.Find_Customer_Cart_Arr.find(
         (item) => item.title.toLowerCase() === product.title.toLowerCase()
-    );
-    console.log('Existing Product', this.existing_Product);
-    console.log('Existing Product', this.existing_Product);
-   
+      );
+      console.log('Existing Product', this.existing_Product);
+      console.log('Existing Product', this.existing_Product);
+
       if (this.category_path == 'all') {
         console.log('All Products', this.allProducts);
         console.log('id', i);
 
-        if(this.allProducts.length){
+        if (this.allProducts.length) {
           console.log('Filtered Item Arr', this.allProducts[i]);
           this.ProductAddobj = this.allProducts[i];
-        }else{
-          this.ProductAddobj=product
+        } else {
+          this.ProductAddobj = product
         }
-          this.ProductAddobj = Object.assign(
-            this.ProductAddobj,
-            this.product_quantity
-            );
-            this._cartservice.ADD_Cart_User_Wise(this.User_Details.username,this.ProductAddobj,product.id)
-            this._cartservice.getItemCount()
-            this._cartservice.Subtotal()
-          } else {
-        console.log('id', i);
-        console.log('Filtered Item Arr', this.filteredItems[i]);
-        this.ProductAddobj = this.filteredItems[i].product;
         this.ProductAddobj = Object.assign(
           this.ProductAddobj,
           this.product_quantity
         );
-        this._cartservice.ADD_Cart_User_Wise(this.User_Details.username,this.ProductAddobj,product.id)
+        this._cartservice.ADD_Cart_User_Wise(this.User_Details.username, this.ProductAddobj, product.id)
+        this._cartservice.getItemCount()
+        this._cartservice.Subtotal()
+      } else {
+        console.log('id', i);
+        console.log('Filtered Item Arr', this.filteredItems[i]);
+        this.ProductAddobj = this.filteredItems[i];
+        this.ProductAddobj = Object.assign(
+          this.ProductAddobj,
+          this.product_quantity
+        );
+        this._cartservice.ADD_Cart_User_Wise(this.User_Details.username, this.ProductAddobj, product.id)
         this._cartservice.getItemCount()
         this._cartservice.Subtotal()
       }
 
-    this.Showcart();
-      }else{
-        this.ProductAddobj = this.allProducts[i];
-        this.ProductAddobj = Object.assign(
-          this.ProductAddobj,
-          this.product_quantity
-        );
-        if(!this.User_Details){
+      this.Showcart();
+    } else {
+      this.ProductAddobj = this.allProducts[i];
+      this.ProductAddobj = Object.assign(
+        this.ProductAddobj,
+        this.product_quantity
+      );
+      if (!this.User_Details) {
         this._cartservice.Guest_User(this.ProductAddobj)
         this._cartservice.getItemCount();
         this._cartservice.Subtotal();
-        }
       }
+    }
   }
 }

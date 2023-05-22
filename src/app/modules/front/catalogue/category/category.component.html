@@ -55,6 +55,7 @@ product.category.toLowerCase()]" -->
 >
   <div class="carousel-cell" *ngFor="let product of grocery_items;let i=index">
     <div
+    *ngIf="product.is_active"
       class="card bg-transparent p-3 m-2"
       [routerLink]="['../front/catalogue/products-list/', product.slug]"
       routerLinkActive="router-link-active"

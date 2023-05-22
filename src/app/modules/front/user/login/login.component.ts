@@ -151,7 +151,8 @@ export class LoginComponent {
       // console.log("user_login Value",this.user_login.value)
       this._authservice.User_Login(this.user_login.value).subscribe({
         next: (User_Login_res:any) => {
-          if (User_Login_res) {
+          
+          if (User_Login_res && User_Login_res.data.user.is_active) {
             if (User_Login_res.data) {
               console.log('User_Login_res', User_Login_res);
               this.User_Login_Token = User_Login_res;
@@ -171,10 +172,12 @@ export class LoginComponent {
                 JSON.stringify(this.user_login.value)
               );
                 
-              this.toastr.success('Login Successfully');
+              this.toastr.success('Login Successfull');
               this.router.navigate(['/home']);
               // this.Get_Customer_Id()
             }
+          }else if(!User_Login_res.data.user.is_active){
+            this.toastr.error('Sorry User has been blocked');
           }
         },
         error: (Login_error) => {

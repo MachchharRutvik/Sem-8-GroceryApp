@@ -168,7 +168,7 @@ this.Login_Logout_msg="Login"
       this.User_name="Login/Signup"
       this._cartService.getItemCount()
       this._cartService.Subtotal()
-      this.toastr.success('Logout Successfully');
+      this.toastr.success('Logout Successfull');
       }
     }
   
